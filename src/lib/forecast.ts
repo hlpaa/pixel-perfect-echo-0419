@@ -8,7 +8,7 @@ export function estimateDays(packageGrams: number, dailyGrams: number | null | u
 }
 
 export function addDaysISO(iso: string, days: number): string {
-  const [y, m, d] = iso.split("-").map(Number);
+  const [y = 0, m = 1, d = 1] = iso.split("-").map(Number);
   const dt = new Date(Date.UTC(y, m - 1, d + days));
   return dt.toISOString().slice(0, 10);
 }
