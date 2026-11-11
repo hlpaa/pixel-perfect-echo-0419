@@ -16,7 +16,7 @@ export function PublicHeader() {
         </nav>
         <div className="flex items-center gap-2">
           {user ? (
-            <Button asChild><Link to="/dashboard">Meu painel</Link></Button>
+            <Button asChild><Link to="/auth">Minha conta</Link></Button>
           ) : (
             <>
               <Button variant="ghost" asChild><Link to="/auth">Entrar</Link></Button>
