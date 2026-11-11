@@ -1,5 +1,13 @@
 {
   "version": "7",
   "dialect": "postgresql",
-  "entries": []
+  "entries": [
+    {
+      "idx": 0,
+      "version": "7",
+      "when": 1794430745611,
+      "tag": "0000_racao_em_dia_schema",
+      "breakpoints": true
+    }
+  ]
 }
