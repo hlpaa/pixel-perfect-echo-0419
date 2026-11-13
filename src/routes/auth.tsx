@@ -9,7 +9,7 @@ import { PublicPage } from "@/components/app/public-layout";
 import { errMsg } from "@/lib/format";
 
 export const Route = createFileRoute("/auth")({
-  validateSearch: (s: Record<string, unknown>): { mode?: "signup" } => (s.mode === "signup" ? { mode: "signup" } : {}),
+  validateSearch: (s: Record<string, unknown>): { mode?: "signup" } => (s["mode"] === "signup" ? { mode: "signup" } : {}),
   head: () => ({ meta: [{ title: "Entrar — Ração em Dia" }, { name: "description", content: "Entre ou crie sua conta na Ração em Dia." }, { property: "og:title", content: "Entrar — Ração em Dia" }, { property: "og:description", content: "Entre ou crie sua conta na Ração em Dia." }] }),
   component: AuthPage,
 });
