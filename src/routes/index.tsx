@@ -19,9 +19,9 @@ export const Route = createFileRoute("/")({
 });
 
 const steps = [
-  { icon: PawPrint, t: "Cadastre seu pet", d: "Informe a ração, o tamanho do pacote e quanto ele come por dia." },
-  { icon: CalendarClock, t: "Acompanhe a previsão", d: "Calculamos quando a ração deve acabar, com alertas verde, amarelo e vermelho." },
-  { icon: Bell, t: "Receba o aviso", d: "Avisamos antes de acabar e você confirma a reposição com um clique." },
+  { icon: PawPrint, t: "Monte seu plano", d: "Informe a ração, o tamanho do pacote e quanto ele come por dia." },
+  { icon: CalendarClock, t: "Veja quanto dura", d: "Calculamos na hora quantos dias o pacote rende." },
+  { icon: Bell, t: "Feche pelo WhatsApp", d: "Combinamos a entrega pelo WhatsApp e avisamos antes da próxima acabar." },
 ];
 
 function Index() {
@@ -34,8 +34,8 @@ function Index() {
             <h1 className="text-4xl font-semibold leading-tight md:text-5xl">A ração do seu pet sempre em dia.</h1>
             <p className="mt-4 text-lg text-muted-foreground">Organize a reposição de ração de cães e gatos sem esquecer e sem correria de última hora.</p>
             <div className="mt-8 flex flex-wrap gap-3">
-              <Button size="lg" asChild><Link to="/auth" search={{ mode: "signup" }}>Começar agora</Link></Button>
-              <Button size="lg" variant="outline" asChild><Link to="/auth">Já tenho conta</Link></Button>
+              <Button size="lg" asChild><Link to="/montar-plano">Montar meu plano</Link></Button>
+              <Button size="lg" variant="outline" asChild><a href="#como-funciona">Como funciona</a></Button>
             </div>
           </div>
           <img src={hero} alt="Cão e gato ao lado de um pote de ração" className="w-full rounded-2xl" width={1024} height={768} />

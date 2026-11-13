@@ -89,6 +89,98 @@ export type Database = {
         }
         Relationships: []
       }
+      deliveries: {
+        Row: {
+          amount: number | null
+          created_at: string
+          delivery_date: string
+          id: string
+          lead_id: string
+          notes: string | null
+          package_kg: number
+          status: string
+        }
+        Insert: {
+          amount?: number | null
+          created_at?: string
+          delivery_date: string
+          id?: string
+          lead_id: string
+          notes?: string | null
+          package_kg: number
+          status?: string
+        }
+        Update: {
+          amount?: number | null
+          created_at?: string
+          delivery_date?: string
+          id?: string
+          lead_id?: string
+          notes?: string | null
+          package_kg?: number
+          status?: string
+        }
+        Relationships: [
+          {
+            foreignKeyName: "deliveries_lead_id_fkey"
+            columns: ["lead_id"]
+            isOneToOne: false
+            referencedRelation: "leads"
+            referencedColumns: ["id"]
+          },
+        ]
+      }
+      leads: {
+        Row: {
+          created_at: string
+          daily_grams: number
+          food_brand: string | null
+          id: string
+          internal_notes: string | null
+          name: string
+          neighborhood: string | null
+          notes: string | null
+          package_kg: number
+          pet_name: string
+          pet_weight_kg: number | null
+          species: Database["public"]["Enums"]["species"]
+          status: string
+          whatsapp: string
+        }
+        Insert: {
+          created_at?: string
+          daily_grams: number
+          food_brand?: string | null
+          id?: string
+          internal_notes?: string | null
+          name: string
+          neighborhood?: string | null
+          notes?: string | null
+          package_kg: number
+          pet_name: string
+          pet_weight_kg?: number | null
+          species: Database["public"]["Enums"]["species"]
+          status?: string
+          whatsapp: string
+        }
+        Update: {
+          created_at?: string
+          daily_grams?: number
+          food_brand?: string | null
+          id?: string
+          internal_notes?: string | null
+          name?: string
+          neighborhood?: string | null
+          notes?: string | null
+          package_kg?: number
+          pet_name?: string
+          pet_weight_kg?: number | null
+          species?: Database["public"]["Enums"]["species"]
+          status?: string
+          whatsapp?: string
+        }
+        Relationships: []
+      }
       notifications: {
         Row: {
           created_at: string
@@ -445,6 +537,41 @@ export type Database = {
           status?: string
         }
         Relationships: []
+      }
+      reminders: {
+        Row: {
+          created_at: string
+          done: boolean
+          id: string
+          lead_id: string
+          note: string | null
+          remind_on: string
+        }
+        Insert: {
+          created_at?: string
+          done?: boolean
+          id?: string
+          lead_id: string
+          note?: string | null
+          remind_on: string
+        }
+        Update: {
+          created_at?: string
+          done?: boolean
+          id?: string
+          lead_id?: string
+          note?: string | null
+          remind_on?: string
+        }
+        Relationships: [
+          {
+            foreignKeyName: "reminders_lead_id_fkey"
+            columns: ["lead_id"]
+            isOneToOne: false
+            referencedRelation: "leads"
+            referencedColumns: ["id"]
+          },
+        ]
       }
       replenishment_plans: {
         Row: {
