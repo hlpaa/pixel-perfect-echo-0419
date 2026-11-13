@@ -12,6 +12,7 @@ import { Route as rootRouteImport } from './routes/__root'
 import { Route as IndexRouteImport } from './routes/index'
 import { Route as AuthRouteImport } from './routes/auth'
 import { Route as ContatoRouteImport } from './routes/contato'
+import { Route as MontarPlanoRouteImport } from './routes/montar-plano'
 import { Route as PrivacidadeRouteImport } from './routes/privacidade'
 import { Route as SobreRouteImport } from './routes/sobre'
 import { Route as TermosRouteImport } from './routes/termos'
@@ -29,6 +30,11 @@ const AuthRoute = AuthRouteImport.update({
 const ContatoRoute = ContatoRouteImport.update({
   id: '/contato',
   path: '/contato',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const MontarPlanoRoute = MontarPlanoRouteImport.update({
+  id: '/montar-plano',
+  path: '/montar-plano',
   getParentRoute: () => rootRouteImport,
 } as any)
 const PrivacidadeRoute = PrivacidadeRouteImport.update({
@@ -51,6 +57,7 @@ export interface FileRoutesByFullPath {
   '/': typeof IndexRoute
   '/auth': typeof AuthRoute
   '/contato': typeof ContatoRoute
+  '/montar-plano': typeof MontarPlanoRoute
   '/privacidade': typeof PrivacidadeRoute
   '/sobre': typeof SobreRoute
   '/termos': typeof TermosRoute
@@ -59,6 +66,7 @@ export interface FileRoutesByTo {
   '/': typeof IndexRoute
   '/auth': typeof AuthRoute
   '/contato': typeof ContatoRoute
+  '/montar-plano': typeof MontarPlanoRoute
   '/privacidade': typeof PrivacidadeRoute
   '/sobre': typeof SobreRoute
   '/termos': typeof TermosRoute
@@ -68,20 +76,36 @@ export interface FileRoutesById {
   '/': typeof IndexRoute
   '/auth': typeof AuthRoute
   '/contato': typeof ContatoRoute
+  '/montar-plano': typeof MontarPlanoRoute
   '/privacidade': typeof PrivacidadeRoute
   '/sobre': typeof SobreRoute
   '/termos': typeof TermosRoute
 }
 export interface FileRouteTypes {
   fileRoutesByFullPath: FileRoutesByFullPath
-  fullPaths: '/' | '/auth' | '/contato' | '/privacidade' | '/sobre' | '/termos'
+  fullPaths:
+    | '/'
+    | '/auth'
+    | '/contato'
+    | '/montar-plano'
+    | '/privacidade'
+    | '/sobre'
+    | '/termos'
   fileRoutesByTo: FileRoutesByTo
-  to: '/' | '/auth' | '/contato' | '/privacidade' | '/sobre' | '/termos'
+  to:
+    | '/'
+    | '/auth'
+    | '/contato'
+    | '/montar-plano'
+    | '/privacidade'
+    | '/sobre'
+    | '/termos'
   id:
     | '__root__'
     | '/'
     | '/auth'
     | '/contato'
+    | '/montar-plano'
     | '/privacidade'
     | '/sobre'
     | '/termos'
@@ -91,6 +115,7 @@ export interface RootRouteChildren {
   IndexRoute: typeof IndexRoute
   AuthRoute: typeof AuthRoute
   ContatoRoute: typeof ContatoRoute
+  MontarPlanoRoute: typeof MontarPlanoRoute
   PrivacidadeRoute: typeof PrivacidadeRoute
   SobreRoute: typeof SobreRoute
   TermosRoute: typeof TermosRoute
@@ -117,6 +142,13 @@ declare module '@tanstack/react-router' {
       path: '/contato'
       fullPath: '/contato'
       preLoaderRoute: typeof ContatoRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/montar-plano': {
+      id: '/montar-plano'
+      path: '/montar-plano'
+      fullPath: '/montar-plano'
+      preLoaderRoute: typeof MontarPlanoRouteImport
       parentRoute: typeof rootRouteImport
     }
     '/privacidade': {
@@ -147,6 +179,7 @@ const rootRouteChildren: RootRouteChildren = {
   IndexRoute: IndexRoute,
   AuthRoute: AuthRoute,
   ContatoRoute: ContatoRoute,
+  MontarPlanoRoute: MontarPlanoRoute,
   PrivacidadeRoute: PrivacidadeRoute,
   SobreRoute: SobreRoute,
   TermosRoute: TermosRoute,

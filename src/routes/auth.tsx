@@ -1,4 +1,4 @@
-import { createFileRoute } from "@tanstack/react-router";
+import { createFileRoute, useNavigate } from "@tanstack/react-router";
 import { useState } from "react";
 import { toast } from "sonner";
 import { supabase } from "@/integrations/supabase/client";
@@ -19,6 +19,7 @@ function AuthPage() {
   const [signup, setSignup] = useState(mode === "signup");
   const [f, setF] = useState({ name: "", phone: "", email: "", password: "" });
   const [busy, setBusy] = useState(false);
+  const navigate = useNavigate();
   const submit = async (e: React.FormEvent) => {
     e.preventDefault();
     setBusy(true);
@@ -31,6 +32,7 @@ function AuthPage() {
         const { error } = await supabase.auth.signInWithPassword({ email: f.email, password: f.password });
         if (error) throw error;
         toast.success("Bem-vindo de volta!");
+        navigate({ to: "/admin" });
       }
     } catch (err) {
       toast.error(errMsg(err));

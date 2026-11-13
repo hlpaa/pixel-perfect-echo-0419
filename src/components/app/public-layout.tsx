@@ -16,11 +16,10 @@ export function PublicHeader() {
         </nav>
         <div className="flex items-center gap-2">
           {user ? (
-            <Button asChild><Link to="/auth">Minha conta</Link></Button>
+            <Button asChild><Link to="/admin">Painel</Link></Button>
           ) : (
             <>
-              <Button variant="ghost" asChild><Link to="/auth">Entrar</Link></Button>
-              <Button asChild className="hidden sm:inline-flex"><Link to="/auth" search={{ mode: "signup" }}>Começar agora</Link></Button>
+              <Button asChild><Link to="/montar-plano">Montar plano</Link></Button>
             </>
           )}
         </div>
